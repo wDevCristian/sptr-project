@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor Utilizator as u 
+
+package "Sistem de monitorizare a calitații aerului" {
+usecase "Regulare perioada citire sensori" as regulate
+usecase "Citire date de pe afișaj" as readDisplay
+usecase "Apasare buton "Marire perioada"" as inc_period
+usecase "Apasare buton "Micșorare perioada"" as dec_period
+}
+
+u -- regulate
+u -- readDisplay
+regulate .> inc_period : <<include>>
+regulate .> dec_period : <<include>>
+@enduml

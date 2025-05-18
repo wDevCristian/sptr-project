@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -66.9,
+      "left": 455.4,
+      "attrs": { "temperature": "21.4", "humidity": "57.5" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": -170.1, "left": 131.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "uno:5V", "dht1:VCC", "red", [ "v47.9", "h3.8" ] ],
+    [ "dht1:GND", "uno:GND.2", "black", [ "v240", "h-19.2" ] ],
+    [ "dht1:SDA", "uno:A2", "green", [ "v240", "h0.1", "v86.4", "h-172.8" ] ]
+  ],
+  "dependencies": {}
+}
