@@ -3,20 +3,53 @@
   "author": "Anonymous maker",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0.6, "left": -0.6, "attrs": {} },
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": 181.8, "attrs": {} },
     {
       "type": "wokwi-dht22",
       "id": "dht1",
-      "top": -66.9,
-      "left": 455.4,
+      "top": -162.9,
+      "left": 378.6,
       "attrs": { "temperature": "21.4", "humidity": "57.5" }
     },
-    { "type": "wokwi-gas-sensor", "id": "gas1", "top": -170.1, "left": 131.8, "attrs": {} }
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 348.3, "left": 179.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 303.8,
+      "left": -105.6,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 303.8,
+      "left": 28.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": 44.8,
+      "left": -196,
+      "attrs": { "pins": "i2c" }
+    }
   ],
   "connections": [
-    [ "uno:5V", "dht1:VCC", "red", [ "v47.9", "h3.8" ] ],
-    [ "dht1:GND", "uno:GND.2", "black", [ "v240", "h-19.2" ] ],
-    [ "dht1:SDA", "uno:A2", "green", [ "v240", "h0.1", "v86.4", "h-172.8" ] ]
+    [ "dht1:VCC", "uno:5V", "red", [ "v67.2", "h76.8", "v230.4", "h-124.8" ] ],
+    [ "dht1:GND", "uno:GND.3", "black", [ "v48", "h67.2", "v278.4", "h-115.2", "v-47.9" ] ],
+    [ "dht1:SDA", "uno:2", "green", [ "v57.6", "h28.9" ] ],
+    [ "gas1:AOUT", "uno:A0", "green", [ "h0" ] ],
+    [ "gas1:VCC", "uno:5V", "red", [ "h0" ] ],
+    [ "gas1:GND", "uno:GND.3", "black", [ "h0" ] ],
+    [ "lcd1:GND", "uno:GND.3", "black", [ "h-28.8", "v172.8", "h581.6" ] ],
+    [ "lcd1:VCC", "uno:5V", "red", [ "h-19.2", "v172.9", "h553" ] ],
+    [ "lcd1:SDA", "uno:A4", "green", [ "h-9.6", "v182.6", "h326.4" ] ],
+    [ "lcd1:SCL", "uno:A5", "purple", [ "v125.1", "h629.3" ] ]
   ],
-  "dependencies": {}
+  "dependencies": {},
+    "serialMonitor": {
+    "display": "always",
+    "newline": "lf",
+    "convertEol": false
+  }
 }

@@ -3,3 +3,4 @@
 
 FreeRTOS
 DHT sensor library
+LiquidCrystal_I2C_STEM
