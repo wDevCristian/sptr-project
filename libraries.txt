@@ -2,5 +2,5 @@
 # See https://docs.wokwi.com/guides/libraries
 
 FreeRTOS
+LiquidCrystal I2C
 DHT sensor library
-LiquidCrystal_I2C_STEM

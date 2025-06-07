@@ -1,55 +1,70 @@
 {
   "version": 1,
-  "author": "Anonymous maker",
+  "author": "Talpai Zsolt",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": 181.8, "attrs": {} },
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 141, "left": 329.2, "attrs": {} },
     {
-      "type": "wokwi-dht22",
-      "id": "dht1",
-      "top": -162.9,
-      "left": 378.6,
-      "attrs": { "temperature": "21.4", "humidity": "57.5" }
-    },
-    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 348.3, "left": 179.8, "attrs": {} },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btn1",
-      "top": 303.8,
-      "left": -105.6,
-      "attrs": { "color": "green", "xray": "1" }
-    },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btn2",
-      "top": 303.8,
-      "left": 28.8,
-      "attrs": { "color": "green", "xray": "1" }
+      "type": "wokwi-arduino-mega",
+      "id": "mega",
+      "top": 113.6,
+      "left": -127.4,
+      "rotate": 90,
+      "attrs": {}
     },
     {
       "type": "wokwi-lcd2004",
       "id": "lcd1",
-      "top": 44.8,
-      "left": -196,
+      "top": -166.4,
+      "left": 418.4,
       "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 361.4,
+      "left": 393.6,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -162.9,
+      "left": 829.8,
+      "attrs": { "temperature": "28.4", "humidity": "78.5" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 357.9, "left": 611.8, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 438.2,
+      "left": 393.6,
+      "attrs": { "color": "green", "xray": "1" }
     }
   ],
   "connections": [
-    [ "dht1:VCC", "uno:5V", "red", [ "v67.2", "h76.8", "v230.4", "h-124.8" ] ],
-    [ "dht1:GND", "uno:GND.3", "black", [ "v48", "h67.2", "v278.4", "h-115.2", "v-47.9" ] ],
-    [ "dht1:SDA", "uno:2", "green", [ "v57.6", "h28.9" ] ],
-    [ "gas1:AOUT", "uno:A0", "green", [ "h0" ] ],
-    [ "gas1:VCC", "uno:5V", "red", [ "h0" ] ],
-    [ "gas1:GND", "uno:GND.3", "black", [ "h0" ] ],
-    [ "lcd1:GND", "uno:GND.3", "black", [ "h-28.8", "v172.8", "h581.6" ] ],
-    [ "lcd1:VCC", "uno:5V", "red", [ "h-19.2", "v172.9", "h553" ] ],
-    [ "lcd1:SDA", "uno:A4", "green", [ "h-9.6", "v182.6", "h326.4" ] ],
-    [ "lcd1:SCL", "uno:A5", "purple", [ "v125.1", "h629.3" ] ]
+    [ "mega:5V", "bb1:bp.1", "red", [ "h-16.5", "v271.1", "h345.6", "v-123.9" ] ],
+    [ "mega:GND.2", "bb1:bn.1", "black", [ "h-26.1", "v270.95", "h364.8", "v-123.5" ] ],
+    [ "lcd1:VCC", "bb1:tp.2", "red", [ "h0" ] ],
+    [ "lcd1:GND", "bb1:tn.1", "black", [ "h0" ] ],
+    [ "btn1:1.l", "bb1:bn.2", "black", [ "h-9.6", "v-37.1" ] ],
+    [ "mega:27", "bb1:11b.f", "violet", [ "h-1.05", "v26.2", "h76.8", "v-153.6" ] ],
+    [ "btn1:2.r", "bb1:11b.g", "violet", [ "h9.8", "v-172.6" ] ],
+    [ "mega:SDA", "lcd1:SDA", "purple", [ "h240", "v-230.8" ] ],
+    [ "mega:SCL", "lcd1:SCL", "blue", [ "h249.6", "v-211.2" ] ],
+    [ "bb1:bp.50", "bb1:tp.50", "red", [ "v0" ] ],
+    [ "bb1:bn.49", "bb1:tn.49", "black", [ "v0" ] ],
+    [ "btn2:1.l", "bb1:bn.3", "black", [ "h0" ] ],
+    [ "btn2:2.r", "bb1:14b.h", "green", [ "h0" ] ],
+    [ "bb1:14b.g", "mega:29", "green", [ "h-268.8", "v153.6", "h-96", "v-35.8" ] ],
+    [ "dht1:GND", "bb1:tn.45", "black", [ "v0" ] ],
+    [ "dht1:VCC", "bb1:tp.42", "red", [ "v0" ] ],
+    [ "bb1:32t.e", "bb1:31t.e", "green", [ "v0" ] ],
+    [ "bb1:45t.e", "mega:2", "green", [ "v9.6", "h-556.8", "v0", "h-48", "v19.2" ] ],
+    [ "mega:A0", "gas1:AOUT", "orange", [ "h-45.3", "v275.1", "h892.8", "v-9.6" ] ],
+    [ "gas1:VCC", "bb1:bp.38", "red", [ "h0" ] ],
+    [ "gas1:GND", "bb1:bn.37", "black", [ "h0" ] ],
+    [ "dht1:SDA", "bb1:45t.a", "green", [ "v124.8", "h-86.3" ] ]
   ],
-  "dependencies": {},
-    "serialMonitor": {
-    "display": "always",
-    "newline": "lf",
-    "convertEol": false
-  }
+  "dependencies": {}
 }
